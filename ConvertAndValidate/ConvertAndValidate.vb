@@ -17,7 +17,7 @@ Module ConvertAndValidate
         Do
             Console.WriteLine($"Enter a number:")
             usernResponse = Console.ReadLine()
-
+            aValidNumber = ConversionNumber(usernResponse, aValidNumber)
             If ConversionValid(usernResponse, aValidNumber) = True Then
                 Console.WriteLine($"{usernResponse} converted successfully to {aValidNumber}!")
             Else
@@ -26,19 +26,32 @@ Module ConvertAndValidate
         Loop
     End Sub
 
-    Function ConversionValid(convertThisString As String, toThisInteger As Integer) As Boolean
+    Function ConversionValid(usernResponse As String, aValidNumber As Integer) As Boolean
 
         Dim status As Boolean = False
 
         Try
-            toThisInteger = CInt(convertThisString)
+            aValidNumber = CInt(usernResponse)
             status = True
         Catch ex As Exception
 
         End Try
 
-        Return status
+        Return (status)
 
+
+    End Function
+
+    Function ConversionNumber(usernResponse As String, aValidNumber As Integer) As Integer
+        Dim value As Integer
+
+        Try
+            aValidNumber = CInt(usernResponse)
+        Catch ex As Exception
+
+        End Try
+
+        Return (aValidNumber)
     End Function
 
 End Module
